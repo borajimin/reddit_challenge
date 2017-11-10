@@ -13,7 +13,7 @@ import { toggleLoginModal, loginUserClick, registerUserClick, toggleSignUpClick,
 const AppContainer = ({ state, toggleLogin, loginUser, registerUser, toggleSignUp, logoutUser }) => {
     return (
         <div>
-            <Header/>
+            <Header />
             <Feed />
             <SideBar toggleLogin={toggleLogin}
               loginUser={loginUser}
