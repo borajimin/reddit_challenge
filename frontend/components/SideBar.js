@@ -8,7 +8,6 @@ import Description from './Description';
 const SideBar = ({ state, toggleLogin, loginUser, registerUser, toggleSignUp, logout }) => {
     return (
       <div style={{  position: 'fixed', top: 90, right: 0, width: '300px', border: '3px solid black', margin: 14}}>
-
           <SubmitPost />
               {(state.loggedIn.length >  0) ? <Button onClick={logout}>Log Out</Button>
             : (<Login modalOpen={toggleLogin} login={loginUser} register={registerUser} onSignUp={toggleSignUp} state={state}/>)}
