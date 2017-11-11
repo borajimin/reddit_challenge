@@ -33,8 +33,9 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/post/all')
+    axios.get('http://localhost:3000/api/posts/all')
     .then((posts) => {
+      console.log('...');
       this.setState({
         posts: posts
       })
@@ -43,13 +44,20 @@ class Feed extends React.Component {
       console.log(e);
     })
   }
+
+  postClick(i) {
+    console.log('clicked!');
+    axios.get('http://localhost:3000/api/post/' + i)
+    .then(() => console.log('clicked'))
+    .catch(err => console.log('error clicking.', err))
+  }
     render() {
       return (
         <div style={{paddingTop: 100}}>
           {
-            posts.map((post) => {
+            posts.map((post, i) => {
                 return (
-                <div>
+                <div key={Math.random()}>
                   <Col componentClass={ControlLabel} sm={7}>
                     <div style={{ border: '2px solid #a1a1a1', borderRadius: '25px', padding: 15}}>
                       <button type="button" className="btn" style={{margin: 5}}>
@@ -59,7 +67,9 @@ class Feed extends React.Component {
                         <span className="glyphicon glyphicon-arrow-down"/>
                       </button>
                       <img src={post.img} height="50" width="50"/>
-                      <b> {post.description} </b>
+                      <a onClick={() => this.postClick(i + 1)}>
+                        <b> {post.description} </b>
+                      </a>
                     </div>
                   </Col>
                 </div>

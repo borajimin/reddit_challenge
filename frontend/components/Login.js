@@ -13,7 +13,8 @@ function onPasswordChange(e) {
     password = e.target.value;
 }
 function onRPasswordChange(e) {
-    rPassword = e.targat.value;
+    rPassword = e.target.value;
+    console.log('rPassowrd: ', rPassword);
 }
 
 const Login = ({ modalOpen, state, login, register, onSignUp }) => {
@@ -27,7 +28,11 @@ const Login = ({ modalOpen, state, login, register, onSignUp }) => {
 
         <Modal.Body>
           {(state.signUp) ? (
+          <div>
+            <input type="text" onChange={(e) => onUsernameChange(e)} placeholder="username" name="username"/>
+            <input type="password" onChange={(e) => onPasswordChange(e)} placeholder="password" name="password"/>
             <input type="password" onChange={(e) => onRPasswordChange(e)} placeholder="repeat password" name="rPassword"/>
+          </div>
           ) : (
             <div>
             <input type="text" onChange={(e) => onUsernameChange(e)} placeholder="username" name="username"/>

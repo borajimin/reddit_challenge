@@ -14,7 +14,8 @@ function rootReducer(state = {
                 username: action.username,
                 password: action.password
             })
-            .then(() => {
+            .then((response) => {
+              console.log('response: ', response.data);
                 return Object.assign({}, state, {loggedIn: action.username});
             })
             .catch(err => {
@@ -22,22 +23,24 @@ function rootReducer(state = {
                 return state;
             });
             break;
-        case "Register":
+        case "REGISTER":
+            console.log('registering..', action);
             axios.post('http://localhost:3000/api/register', {
                 username: action.username,
                 password: action.password,
-                repeatedPassword: action.rpw
+                repeatPassword: action.rPassword
             })
+            .then(() => Object.assign({}, state))
             .catch(err => {
                 console.log(err);
                 return state;
             });
-            return state;
         case "SIGN_UP":
             return Object.assign({}, state, {signUp: !state.signUp});
         case "LOG_OUT":
             axios.get('http://localhost:3000/api/logout')
-            .then(() => {
+            .then((response) => {
+              console.log('response: ', response.data);
                 return Object.assign({}, state, {loggedIn: ''});
             })
             .catch(err => {

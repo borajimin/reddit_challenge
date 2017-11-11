@@ -16,20 +16,24 @@ class NewPost extends React.Component {
     }
 
     postNewPost() {
+      console.log('posting new post.');
         axios.post('http://localhost:3000/api/post/new', {
             postId: null,
             img: this.state.image,
             description: this.state.description,
             title: this.state.title
         })
+        // .then(() => console.log('made post.'))
         .catch(e => {
             console.log("Posting new post failed", e);
         });
     }
     onSubmitPost() {
-        this.setState({
-            redirect: true
-        }, () => this.postNewPost());
+      this.postNewPost();
+
+        // this.setState({
+        //     redirect: true
+        // }, () => this.postNewPost());
     }
     onTitleChange(e) {
         this.setState({

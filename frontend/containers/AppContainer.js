@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         toggleLogin: () => {dispatch(toggleLoginModal());},
         loginUser: (u, p) => {dispatch(loginUserClick(u, p));},
-        registerUser: (u, p) => {dispatch(registerUserClick(u, p));},
+        registerUser: (u, p, rpw) => {dispatch(registerUserClick(u, p, rpw));},
         toggleSignUp: () => {dispatch(toggleSignUpClick());},
         logoutUser: () => {dispatch(logoutUserClick());}
     };

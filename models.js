@@ -61,9 +61,31 @@ var Post = sequelize.define('posts', {
     }
 });
 
+var Vote = sequelize.define('votes', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    fk_post_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    fk_user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        unique: true
+    },
+    vote_type: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    }
+});
+
 module.exports = {
     sequelize,
     User,
     Post,
+    Vote
     // EXPORT models HERE
 };
